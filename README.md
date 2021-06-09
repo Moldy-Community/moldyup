@@ -3,6 +3,8 @@
     <img width="100" src="./assets/icon.png">
   </p>
   <h1>Moldy The best project starter of the world</h1>
+  <hr>
+  <h3>MoldyUp</h3>
 </div>
 
 <div align="center">
