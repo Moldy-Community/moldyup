@@ -1,6 +1,6 @@
 <div align="center">
   <p>
-    <img width="200" src="./assets/icon.png">
+    <img width="200" src="./assets/images/icon.png">
   </p>
   <h1>Moldy The best project starter of the world</h1>
   <hr>
