@@ -1,6 +1,6 @@
 <div align="center">
   <p>
-    <img width="100" src="./assets/icon.png">
+    <img width="200" src="./assets/images/icon.png">
   </p>
   <h1>Moldy The best project starter of the world</h1>
   <hr>
@@ -14,6 +14,7 @@
 ![DiscordBadge](https://img.shields.io/discord/842085043777831012?logo=discord&logoColor=white)
 ![Moldy STARS](https://img.shields.io/github/stars/Moldy-Community/moldy?style=social)
 ![Moldy License](https://img.shields.io/github/license/moldy-community/moldy)
+
 </div>
 
 ## 🤔 What is Moldy ?
@@ -40,6 +41,7 @@ The Moldy history and philosophy is here:
 For any other transtation make a pull request the spanish history is the original
 
 ## 🧐 Contribute
+
 1. Install Golang
 2. Install Git
 3. Install just [here](https://github.com/casey/just)
@@ -50,19 +52,60 @@ For any other transtation make a pull request the spanish history is the origina
 ```
 git clone https://github.com/YOUR_USER/moldy.git
 ```
-7. Make your support or installer
 
-8. Make a new branch with the feat
+7. Enter the moldy folder
 
-9. Commit your changes with the guide [CONVENTIONAL COMMITS](https://www.conventionalcommits.org/en/v1.0.0/)
+```
+cd moldy
+```
 
-10. Make a pull request describing the new feature and if pass the tests we accept your pull request or if not pass, will explain why.
+8. Install the dependencies with:
+
+```
+just dependencies
+```
+
+9. Run the CLI with:
+
+```
+just r -h
+```
+
+10. Make a new branch:
+
+```
+just b new-feat
+```
+
+11. Commit your changes with the guide [CONVENTIONAL COMMITS](https://www.conventionalcommits.org/en/v1.0.0/) installing the manager called commitizen run this commands:
+
+```
+# INSTALL PYTHON FOR THIS COMMAND
+just pypi
+
+# OR MACOS USERS
+  # INSTALL HOMEBREW FOR THIS COMMAND
+  just homebrew
+
+# AFTER THAT RUN
+just c
+
+# SELECT THE OPTIONS AND SUCCESFULY COMMIT CREATEDS
+```
+
+12. Upload the changes from the branch to your fork
+
+```
+just pb new-feat
+```
+
+13. Make a pull request describing the new feature and if pass the tests we accept your pull request or if not pass, will explain why.
 
 ## ✔️ Authors
 
 All authors of moldy are detailed in the book **[here](https://moldybook.netlify.app/docs)**
 
-## 📱  Social media
+## 📱 Social media
 
 Moldy is on the following social networks
 
