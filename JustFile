@@ -1,0 +1,52 @@
+alias pypi := pypi-commit-installer
+alias homebrew := homebrew-commit-installer
+alias c := commit
+alias b := branch
+alias p := push
+alias pb := push-branch
+alias pl := pull
+
+default:
+  echo "Just commands"
+  just --list
+
+branch NAME:
+  echo "Running the git branch new"
+  git checkout -b '{{NAME}}'
+  echo "Creation and change of branch successful"
+
+pypi-commit-installer:
+  echo "Installing commitizen ..."
+  pip install commitizen
+  echo "Succesfully installed commitizen :D"
+
+homebrew-commit-installer:
+  echo "Installing commitizen by Homebrew ..."
+  brew install commitizen
+  echo "Succesfully installed commitizen :p"
+
+commit:
+  git add .
+  echo "Running commitizen..."
+  cz c
+  echo "Finished the commit :D"
+
+push:
+  echo "Pushing to main ..."
+  git push -u origin main
+  echo "Finished the push"
+
+push-branch NAME:
+  echo "Pushing to {{NAME}} ..."
+  git push origin {{NAME}}
+  echo "Finished the push"
+
+add-stream:
+  echo "Adding Moldy upstream"
+  git remote add upstream git@github.com:Moldy-Community/moldy.git
+  echo "Successful addition"
+
+pull:
+  echo "Pulling from Moldy main"
+  git pull upstream main
+  echo "successful update"
