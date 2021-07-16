@@ -17,8 +17,6 @@ moldyLinuxArm64="moldy-v0.0.2_linux_arm64"
 moldyMacAmd64="moldy-v0.0.2_macos_amd64"
 moldyMacArm64="moldy-v0.0.2_macos_arm64"
 
-home='$HOME'
-
 installOnLinux() {
     # 32 Bits
     echo "Do you have a 32x processor?[y/n]"
