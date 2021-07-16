@@ -136,10 +136,6 @@ setPath() {
         echo 'Indicate the path where you want to install Moldy'
         read -r binaryPath
         # other path
-        # validate path
-        # if [ $# -ne 1 ]; then
-        #     error "Wrong path, no more than 2 parameters"
-        # fi
         # validate dir
         if [ ! -d "$binaryPath" ]; then
             error "Error: directory '$binaryPath' does not exist"
