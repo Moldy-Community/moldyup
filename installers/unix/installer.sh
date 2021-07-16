@@ -1,18 +1,120 @@
-#!/bin/sh
+#!/bin/bash
 set -o nounset # error when referencing undefined variable
 set -o errexit # exit when command fails
 
 error() {
-    echo $1
+    echo "$1"
     exit 1
+}
+
+# Download Path
+realesePath="https://github.com/Moldy-Community/moldy/releases/download/v0.2.0"
+
+# Binaries
+moldyLinux386="moldy-v0.0.2_linux_386"
+moldyLinuxAmd64="moldy-v0.0.2_linux_amd64"
+moldyLinuxArm64="moldy-v0.0.2_linux_arm64"
+moldyMacAmd64="moldy-v0.0.2_macos_amd64"
+moldyMacArm64="moldy-v0.0.2_macos_arm64"
+
+installOnLinux() {
+    # 32 Bits
+    echo "Do you have a 32x processor?"
+    read -r answer32
+
+    if [ "$answer32" != "${answer32#[Yy]}" ]; then
+        echo "Installing $moldyLinux386"
+        if [ $# -eq 0 ]; then
+            curl -L "$realesePath/$moldyLinux386" >"$HOME/.moldy/$moldyLinux386"
+        else
+            curl -L "$realesePath/$moldyLinux386" >"$1/$moldyLinux386"
+        fi
+        return
+    fi
+
+    # 64 Bits
+    echo "Do you have a 64x processor?"
+    read -r answer64
+
+    if [ "$answer64" != "${answer64#[Yy]}" ]; then
+        echo "Do you have amd (standard)[1] or arm[2] architecture?"
+        read -r architecture
+
+        if [ "$architecture" != "${architecture#[1]}" ]; then
+            # amd
+            echo "Installing $moldyLinuxAmd64"
+            if [ $# -eq 0 ]; then
+                curl -L "$realesePath/$moldyLinuxAmd64" >"$HOME/.moldy/$moldyLinuxAmd64"
+            else
+                curl -L "$realesePath/$moldyLinuxAmd64" >"$1/$moldyLinuxAmd64"
+            fi
+            return
+        elif [ "$architecture" != "${architecture#[2]}" ]; then
+            # arm
+            echo "Installing $moldyLinuxArm64"
+            if [ $# -eq 0 ]; then
+                curl -L "$realesePath/$moldyLinuxArm64" >"$HOME/.moldy/$moldyLinuxArm64"
+            else
+                curl -L "$realesePath/$moldyLinuxArm64" >"$1/$moldyLinuxArm64"
+            fi
+            return
+        else
+            error "You can only choose amd [1] or arm [2]"
+        fi
+    fi
+}
+
+installOnMac() {
+    echo "Do you have amd (standard)[1] or arm[2] architecture?"
+    read -r architecture
+
+    if [ "$architecture" != "${architecture#[1]}" ]; then
+        # amd
+        echo "Installing $moldyMacAmd64"
+        if [ $# -eq 0 ]; then
+            curl -L "$realesePath/$moldyMacAmd64" >"$HOME/.moldy/$moldyMacAmd64"
+        else
+            curl -L "$realesePath/$moldyMacAmd64" >"$1/$moldyMacAmd64"
+        fi
+        return
+    elif [ "$architecture" != "${architecture#[2]}" ]; then
+        # arm
+        echo "Installing $moldyMacArm64"
+        if [ $# -eq 0 ]; then
+            curl -L "$realesePath/$moldyMacArm64" >"$HOME/.moldy/$moldyMacArm64"
+        else
+            curl -L "$realesePath/$moldyMacArm64" >"$1/$moldyMacArm64"
+        fi
+        return
+    else
+        error "You can only choose amd [1] or arm [2]"
+    fi
 }
 
 setPath() {
     echo "Where do you want to install the moldy binary? [default in $ HOME/.moldy]?"
-    read path
-    # Check that the directory exists
-    if [ ! -d $path ]; then
-        error "Error: directory "$path" does not exist"
+    read -r binaryPath
+
+    if [ -z "$binaryPath" ]; then
+        # default
+        mkdir "$HOME/.moldy"
+        if [ "$(uname)" == "Darwin" ]; then
+            installOnLinux
+        fi
+        [ "$(uname)" == "Linux" ] && installOnMac
+    else
+        # other path
+        # validate path
+        # if [ $# -ne 1 ]; then
+        #     error "Wrong path, no more than 2 parameters"
+        # fi
+        # validate dir
+        if [ ! -d "$binaryPath" ]; then
+            error "Error: directory '$binaryPath' does not exist"
+        fi
+
+        [ "$(uname)" == "Darwin" ] && installOnLinux "$binaryPath"
+        [ "$(uname)" == "Linux" ] && installOnMac "$binaryPath"
     fi
 
     # Install binary...
@@ -80,7 +182,7 @@ installUnzip() {
 
 nerdFontVerification() {
     echo "We recommend that you use a nerd font, if you don't we can install a [y/n]?"
-    read answer
+    read -r answer
     if [ "$answer" != "${answer#[Yy]}" ]; then
         echo "Installing Ubuntu mono nerd font"
         git clone https://github.com/Moldy-Community/moldyup.git || installGit
