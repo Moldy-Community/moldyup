@@ -17,6 +17,8 @@ moldyLinuxArm64="moldy-v0.0.2_linux_arm64"
 moldyMacAmd64="moldy-v0.0.2_macos_amd64"
 moldyMacArm64="moldy-v0.0.2_macos_arm64"
 
+home='$HOME'
+
 installOnLinux() {
     # 32 Bits
     echo "Do you have a 32x processor?[y/n]"
@@ -28,12 +30,12 @@ installOnLinux() {
             curl -L "$realesePath/$moldyLinux386" >"$HOME/.moldy/moldy"
             echo "Moldy binary installation successful 😀"
             echo ""
-            echo "==> Don't forget to add this 'export PATH=$PATH:$HOME/.moldy/moldy' in your terminal like .bashrc .zshrc or whatever else you use"
+            echo "==> Don't forget to add this 'export PATH=\$PATH:\$HOME/.moldy/moldy' in your terminal like .bashrc .zshrc or whatever else you use"
         else
             curl -L "$realesePath/$moldyLinux386" >"$1/moldy"
             echo "Moldy binary installation successful 😀"
             echo ""
-            echo "==> Don't forget to add this 'export PATH=$PATH:$1/moldy' in your terminal like .bashrc .zshrc or whatever else you use"
+            echo "==> Don't forget to add this 'export PATH=\$PATH:$1/moldy' in your terminal like .bashrc .zshrc or whatever else you use"
         fi
         return
     fi
@@ -53,12 +55,12 @@ installOnLinux() {
                 curl -L "$realesePath/$moldyLinuxAmd64" >"$HOME/.moldy/moldy"
                 echo "Moldy binary installation successful 😀"
                 echo ""
-                echo "==> Don't forget to add this 'export PATH=$PATH:$HOME/.moldy/moldy' in your terminal like .bashrc .zshrc or whatever else you use"
+                echo "==> Don't forget to add this 'export PATH=\$PATH:\$HOME/.moldy/moldy' in your terminal like .bashrc .zshrc or whatever else you use"
             else
                 curl -L "$realesePath/$moldyLinuxAmd64" >"$1/moldy"
                 echo "Moldy binary installation successful 😀"
                 echo ""
-                echo "==> Don't forget to add this 'export PATH=$PATH:$1/moldy' in your terminal like .bashrc .zshrc or whatever else you use"
+                echo "==> Don't forget to add this 'export PATH=\$PATH:$1/moldy' in your terminal like .bashrc .zshrc or whatever else you use"
             fi
             return
         elif [ "$architecture" != "${architecture#[2]}" ]; then
@@ -68,12 +70,12 @@ installOnLinux() {
                 curl -L "$realesePath/$moldyLinuxArm64" >"$HOME/.moldy/moldy"
                 echo "Moldy binary installation successful 😀"
                 echo ""
-                echo "==> Don't forget to add this 'export PATH=$PATH:$HOME/.moldy/moldy' in your terminal like .bashrc .zshrc or whatever else you use"
+                echo "==> Don't forget to add this 'export PATH=\$PATH:\$HOME/.moldy/moldy' in your terminal like .bashrc .zshrc or whatever else you use"
             else
                 curl -L "$realesePath/$moldyLinuxArm64" >"$1/moldy"
                 echo "Moldy binary installation successful 😀"
                 echo ""
-                echo "==> Don't forget to add this 'export PATH=$PATH:$1/moldy' in your terminal like .bashrc .zshrc or whatever else you use"
+                echo "==> Don't forget to add this 'export PATH=\$PATH:$1/moldy' in your terminal like .bashrc .zshrc or whatever else you use"
             fi
             return
         else
@@ -93,12 +95,12 @@ installOnMac() {
             curl -L "$realesePath/$moldyMacAmd64" >"$HOME/.moldy/moldy"
             echo "Moldy binary installation successful 😀"
             echo ""
-            echo "==> Don't forget to add this 'export PATH=$PATH:$HOME/.moldy/moldy' in your terminal like .bashrc .zshrc or whatever else you use"
+            echo "==> Don't forget to add this 'export PATH=\$PATH:\$HOME/.moldy/moldy' in your terminal like .bashrc .zshrc or whatever else you use"
         else
             curl -L "$realesePath/$moldyMacAmd64" >"$1/moldy"
             echo "Moldy binary installation successful 😀"
             echo ""
-            echo "==> Don't forget to add this 'export PATH=$PATH:$1/moldy' in your terminal like .bashrc .zshrc or whatever else you use"
+            echo "==> Don't forget to add this 'export PATH=\$PATH:$1/moldy' in your terminal like .bashrc .zshrc or whatever else you use"
         fi
         return
     elif [ "$architecture" != "${architecture#[2]}" ]; then
@@ -108,12 +110,12 @@ installOnMac() {
             curl -L "$realesePath/$moldyMacArm64" >"$HOME/.moldy/moldy"
             echo "Moldy binary installation successful 😀"
             echo ""
-            echo "==> Don't forget to add this 'export PATH=$PATH:$HOME/.moldy/moldy' in your terminal like .bashrc .zshrc or whatever else you use"
+            echo "==> Don't forget to add this 'export PATH=\$PATH:\$HOME/.moldy/moldy' in your terminal like .bashrc .zshrc or whatever else you use"
         else
             curl -L "$realesePath/$moldyMacArm64" >"$1/moldy"
             echo "Moldy binary installation successful 😀"
             echo ""
-            echo "==> Don't forget to add this 'export PATH=$PATH:$1/moldy' in your terminal like .bashrc .zshrc or whatever else you use"
+            echo "==> Don't forget to add this 'export PATH=\$PATH:$1/moldy' in your terminal like .bashrc .zshrc or whatever else you use"
         fi
         return
     else
@@ -135,20 +137,18 @@ setPath() {
     else
         echo 'Indicate the path where you want to install Moldy'
         read -r binaryPath
-        if [ -z "$binaryPath" ]; then
-            # other path
-            # validate path
-            # if [ $# -ne 1 ]; then
-            #     error "Wrong path, no more than 2 parameters"
-            # fi
-            # validate dir
-            if [ ! -d "$binaryPath" ]; then
-                error "Error: directory '$binaryPath' does not exist"
-            fi
-
-            [ "$(uname)" == "Darwin" ] && installOnMac "$binaryPath"
-            [ "$(uname)" == "Linux" ] && installOnLinux "$binaryPath"
+        # other path
+        # validate path
+        # if [ $# -ne 1 ]; then
+        #     error "Wrong path, no more than 2 parameters"
+        # fi
+        # validate dir
+        if [ ! -d "$binaryPath" ]; then
+            error "Error: directory '$binaryPath' does not exist"
         fi
+
+        [ "$(uname)" == "Darwin" ] && installOnMac "$binaryPath"
+        [ "$(uname)" == "Linux" ] && installOnLinux "$binaryPath"
     fi
 }
 
@@ -232,6 +232,7 @@ nerdFontVerification() {
 installation() {
     [ "$(expr substr $(uname -s) 1 10)" == "MINGW64_NT" ] && error "You are using the linux installer, you must use the installer for windows"
     setPath
+    echo ""
     nerdFontVerification
 }
 
