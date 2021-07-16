@@ -1,8 +1,0 @@
-TODO
-
-✅ 1. Welcome greeting
-✅ 2. Where you are going to install the Moldy binary
-3. Install the Moldy binary
-✅ 4. Check if you have git installed
-✅ 5. check if you have nerd fonts, if not, you should download one by default
-6. Delete this file
