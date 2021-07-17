@@ -96,4 +96,4 @@ Moldy is on the following social networks
 
 ---
 
-<div align="center">Made with ❤️ in the world</div>
+Made with ❤️ in the world
