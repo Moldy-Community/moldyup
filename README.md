@@ -2,32 +2,24 @@
   <p>
     <img width="200" src="./assets/images/icon.png">
   </p>
-  <h1>Moldy The best project starter of the world</h1>
-  <hr>
-  <h3>MoldyUp</h3>
+  <h1>MoldyUp</h1>
 </div>
 
 <div align="center">
 
-![GithubTestBadge](https://img.shields.io/github/workflow/status/Moldy-Community/moldy/Go?label=Tests&logo=github)
-![Last Commit](https://img.shields.io/github/last-commit/Moldy-Community/moldy)
+![GithubTestBadge](https://img.shields.io/github/workflow/status/Moldy-Community/moldyup/Go?label=Tests&logo=github)
+![Last Commit](https://img.shields.io/github/last-commit/Moldy-Community/moldyup)
 ![DiscordBadge](https://img.shields.io/discord/842085043777831012?logo=discord&logoColor=white)
-![Moldy STARS](https://img.shields.io/github/stars/Moldy-Community/moldy?style=social)
-![Moldy License](https://img.shields.io/github/license/moldy-community/moldy)
+![Moldy STARS](https://img.shields.io/github/stars/Moldy-Community/moldyup?style=social)
+![Moldy License](https://img.shields.io/github/license/moldy-community/moldyup)
 
 </div>
 
-## 🤔 What is Moldy ?
+## 🤔 What is Moldyup ?
 
-Hey I present Moldy this beautiful tool that will solve your life in creating, managing, maintaining, promoting and organizing your projects, are you tired of having all your projects in a messy way, do not know how to maintain a structure or have a great library framework or language and do not know how to make it known well here is your solution that makes moldy ?
+Hey I present to moldy, the [moldy](https://github.com/Moldy-Community/moldy) installer that does not discriminate by os or architecture of your processor.
 
-1. In case you want to promote your project you can create a template that can be installed all over the world, yes that's great.
-
-2. In case you want to organize your project, moldy helps you by creating a basic design template and main files like configurations etc.
-
-3. Standardizing commits and workflows we should take advantage of all the potential that tools like GitHub, GitLab or Bitbucket give us so issue templates, workflows and configurations depending on the package manager.
-
-4. Moldy is a tool to organize projects start projects in a single tool that is moldy as fast as golang :D
+Moldyup gives you a friendly and guided installation of [moldy](https://github.com/Moldy-Community/moldy), without complications, simple and minimalist.
 
 ---
 
@@ -40,46 +32,35 @@ The Moldy history and philosophy is here:
 
 For any other transtation make a pull request the spanish history is the original
 
+---
+
 ## 🧐 Contribute
 
-1. Install Golang
-2. Install Git
-3. Install just [here](https://github.com/casey/just)
-4. Give me a star ⭐
-5. Make a Fork
-6. Clone the repository using git
+1. Install Git
+2. Install just [here](https://github.com/casey/just)
+3. Give me a star ⭐
+4. Make a Fork
+5. Clone the repository using git
 
-```
-git clone https://github.com/YOUR_USER/moldy.git
-```
-
-7. Enter the moldy folder
-
-```
-cd moldy
+```sh
+git clone https://github.com/YOUR_USER/moldyup.git
 ```
 
-8. Install the dependencies with:
+6. Enter the moldyup folder
 
-```
-just dependencies
-```
-
-9. Run the CLI with:
-
-```
-just r -h
+```sh
+cd moldyup
 ```
 
-10. Make a new branch:
+7. Make a new branch:
 
-```
+```sh
 just b new-feat
 ```
 
-11. Commit your changes with the guide [CONVENTIONAL COMMITS](https://www.conventionalcommits.org/en/v1.0.0/) installing the manager called commitizen run this commands:
+8. Commit your changes with the guide [CONVENTIONAL COMMITS](https://www.conventionalcommits.org/en/v1.0.0/) installing the manager called commitizen run this commands:
 
-```
+```sh
 # INSTALL PYTHON FOR THIS COMMAND
 just pypi
 
@@ -93,13 +74,13 @@ just c
 # SELECT THE OPTIONS AND SUCCESFULY COMMIT CREATEDS
 ```
 
-12. Upload the changes from the branch to your fork
+9. Upload the changes from the branch to your fork
 
-```
+```sh
 just pb new-feat
 ```
 
-13. Make a pull request describing the new feature and if pass the tests we accept your pull request or if not pass, will explain why.
+10. Make a pull request describing the new feature and if pass the tests we accept your pull request or if not pass, will explain why.
 
 ## ✔️ Authors
 
